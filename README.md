@@ -5,14 +5,14 @@
 ## To build:
 mvn clean package
 
-##To run
+## To run
 In root directory, java -jar target/phrases-rest-service-0.1.0.jar
 
 Browse to http://localhost:8080/?text=<your text here>
 
 # version notes
 
-##0.1.0
+## 0.1.0
 Naive implementation. Fails if no text parameter passed without error message.
 Loads phrases.txt into memory on startup, checks to see if any of those are substrings of text param
 and returns them as JSON.

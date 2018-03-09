@@ -38,9 +38,9 @@ public class PhraseSearch {
     
     //check to see if any of the phrases in dictonary are comtained in the input 
     //(rather than the other around which would be much harder!)
-    ArrayList<String> matchPhrases() {
+    private List<String> matchPhrases() {
     	
-    		ArrayList<String> matching = new ArrayList<String>();
+    		List<String> matching = new ArrayList<String>();
     		for( String phrase:phrases) {
     			if(this.text.contains(phrase))
     			{

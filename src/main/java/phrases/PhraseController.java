@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class PhraseController {
 
-    @RequestMapping()
+    @RequestMapping("/phrases")
     public PhraseSearch ps(@RequestParam(value="text") String text) throws IOException {
         return new PhraseSearch(text);
     }

@@ -13,31 +13,36 @@ public class PhraseSearch {
 	private final List<String> phrases;
 	private final List<String> matchedPhrases;
 
-    public PhraseSearch(String text) throws IOException{
+    public PhraseSearch(String text) {
         this.text = text;
         this.phrases = new ArrayList<String>();
-        InputStream is = this.getClass().getClassLoader().getResourceAsStream("phrases.txt");
         
-        InputStreamReader isr = new InputStreamReader(is);
-        BufferedReader br = new BufferedReader(isr);
-        //StringBuffer sb = new StringBuffer();
-        String line;
-        while ((line = br.readLine()) != null) 
-        {
-          //sb.append(line);
-          //System.out.println(line);
-          this.phrases.add(line);
+        try {
+        	  InputStream is = this.getClass().getClassLoader().getResourceAsStream("phrases.txt");
+          InputStreamReader isr = new InputStreamReader(is);
+          BufferedReader br = new BufferedReader(isr);
+          String line;
+          while ((line = br.readLine()) != null) 
+          {
+            this.phrases.add(line);
+          }
+          br.close();
+          isr.close();
+          is.close(); 
+          
         }
-        br.close();
-        isr.close();
-        is.close();  
+        catch(IOException e)//fatal - exit
+        {
+          System.out.println("There was an error opening the phrases dictionary:" + e.toString());
+          System.exit(1);
+        }
         
         matchedPhrases=matchPhrases();
-        
+          
     }
     
-    //check to see if any of the phrases in dictonary are comtained in the input 
-    //(rather than the other around which would be much harder!)
+    //check to see if any of the phrases in dictionary are contained in the input 
+    //(rather than the other way around to avoid matching parts of other diction ary entries)
     private List<String> matchPhrases() {
     	
     		List<String> matching = new ArrayList<String>();

@@ -43,7 +43,7 @@ public class PhraseSearch {
     
     //check to see if any of the phrases in dictionary are contained in the input 
     //(rather than the other way around to avoid matching parts of other diction ary entries)
-    private List<String> matchPhrases() {
+    private final List<String> matchPhrases() {
     	
     		List<String> matching = new ArrayList<String>();
     		for( String phrase:phrases) {
@@ -55,7 +55,7 @@ public class PhraseSearch {
     		return matching;
     }
     
-    public List<String> getPhrases() {
+    public final List<String> getPhrases() {
     		return matchedPhrases;
     }
 }
